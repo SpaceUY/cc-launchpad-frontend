@@ -73,7 +73,7 @@ const FullScreen = ({
               gap={1}
               alignItems="center"
               onClick={() => {
-                navigate(-1);
+                navigate('/');
               }}
               sx={{ cursor: 'pointer' }}>
               <img src={logo} alt="project logo" />
