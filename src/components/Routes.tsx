@@ -5,7 +5,7 @@ import FullScreen from 'design/Layouts/FullScreen';
 
 import CreatePage from 'modules/create/pages/Creates';
 
-import ParticipatePage from 'modules/participate/pages/ParticipatePage';
+import ParticipatePage from 'modules/participate/pages/Participate';
 
 const Routes = () => (
   <RoutesFromRouter>

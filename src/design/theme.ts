@@ -15,7 +15,7 @@ export const Colors = {
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     primary,
     background: {
       default: '#051444',

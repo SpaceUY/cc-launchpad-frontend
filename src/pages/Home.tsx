@@ -38,6 +38,7 @@ const Home = () => {
         textTransform={'uppercase'}
         className="lestget"
         ref={letsGetStartedRef}
+        color="white"
         sx={{ transition: 'all ease 400ms' }}>
         {"Let's get "}
         <Typography

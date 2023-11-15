@@ -1,18 +1,16 @@
-import { Button, ButtonProps, useTheme } from '@mui/material';
+import { Button, ButtonProps } from '@mui/material';
 
-const ContrastButton = (props: ButtonProps) => {
-  const theme = useTheme();
-
+const WhiteButton = (props: ButtonProps) => {
   return (
     <Button
       {...props}
       sx={{
         ...props.sx,
-        backgroundColor: theme.palette.text.primary,
-        color: theme.palette.background.default,
-        '&:hover': { backgroundColor: theme.palette.text.secondary }
+        backgroundColor: props.disabled ? 'transparent' : 'whitesmoke',
+        color: props.disabled ? '#333 !important' : 'black',
+        '&:hover': { backgroundColor: '#ccc' }
       }}
     />
   );
 };
-export default ContrastButton;
+export default WhiteButton;

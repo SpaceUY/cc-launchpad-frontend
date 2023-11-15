@@ -5,6 +5,8 @@ import {
   createAction
 } from '@reduxjs/toolkit';
 
+import createSlice from './create/create.slice';
+
 export const rootReducer = (state: any, action: Action<string>) => {
   if (action.type === 'RESET_STATE') {
     return appReducer(undefined, action);
@@ -13,7 +15,9 @@ export const rootReducer = (state: any, action: Action<string>) => {
   return appReducer(state, action);
 };
 
-const appReducer = combineReducers({});
+const appReducer = combineReducers({
+  create: createSlice
+});
 
 export const store = configureStore({
   reducer: rootReducer,

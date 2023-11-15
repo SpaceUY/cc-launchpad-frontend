@@ -4,7 +4,9 @@ const ParticipatePage = () => {
   return (
     <>
       <Container>
-        <Typography variant="h3">PARTICIPATE</Typography>
+        <Typography variant="h3" color="white">
+          PARTICIPATE
+        </Typography>
       </Container>
     </>
   );

@@ -53,7 +53,7 @@ const FullScreen = ({
 
   return (
     <>
-      <Box position="fixed" top={0} left={0} zIndex={-1}>
+      <Box position="fixed" top={0} left={0} zIndex={-1} width="100%">
         <StarsBackground />
       </Box>
       <Box position="fixed" bottom={0} left={'5%'} zIndex={-1}>
@@ -126,7 +126,8 @@ const FullScreen = ({
               padding: '2rem 0',
               borderWidth: 0,
               height: 'fit-content',
-              minWidth: '12.875rem'
+              minWidth: '12.875rem',
+              borderRadius: '0 1.5rem 1.5rem 0'
             }}>
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               {navigation.map((nav) => (
