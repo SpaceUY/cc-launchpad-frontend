@@ -1,15 +1,49 @@
 import { Form, Formik } from 'formik';
+import { useAppDispatch } from 'hooks/useAppDispatch';
+import { useSelector } from 'react-redux';
+import * as Yup from 'yup';
 
 import { Box, Grid, TextField, Typography } from '@mui/material';
 
 import WhiteCard from 'design/WhiteCard';
 
+import { createSelector } from 'redux/create/create.selector';
+import { handleNextStep, updateCreateForm } from 'redux/create/create.slice';
+
 import StepButtons from './StepButtons';
 import StepContainer from './StepContainer';
 
+const validationSchema = Yup.object().shape({
+  tokenAddress: Yup.string().required('This is a required field'),
+  tokenPrice: Yup.string().required('This is a required field'),
+  softCap: Yup.string().required('This is a required field'),
+  hardCap: Yup.string().required('This is a required field'),
+  maxContribution: Yup.string().required('This is a required field'),
+  minContribution: Yup.string().required('This is a required field')
+});
+
 const StepTwo = () => {
+  const dispatch = useAppDispatch();
+  const { createForm } = useSelector(createSelector);
+
   return (
-    <Formik initialValues={{}} onSubmit={(values) => {}}>
+    <Formik
+      initialValues={{
+        tokenAddress: createForm.tokenAddress,
+        tokenPrice: createForm.tokenPrice,
+        softCap: createForm.softCap,
+        hardCap: createForm.hardCap,
+        maxContribution: createForm.maxContribution,
+        minContribution: createForm.minContribution
+      }}
+      validationSchema={validationSchema}
+      validateOnChange={false}
+      validateOnBlur={true}
+      validateOnMount={false}
+      onSubmit={(values) => {
+        dispatch(updateCreateForm(values));
+        dispatch(handleNextStep());
+      }}>
       {(formik) => (
         <Form>
           <StepContainer>
@@ -28,6 +62,10 @@ const StepTwo = () => {
                     <TextField
                       color="primary"
                       variant="filled"
+                      value={formik.values.tokenAddress}
+                      onChange={(e) =>
+                        formik.setFieldValue('tokenAddress', e.target.value)
+                      }
                       name="token-address"
                       sx={{ mt: '2rem' }}
                     />
@@ -46,6 +84,10 @@ const StepTwo = () => {
                     <TextField
                       color="primary"
                       variant="filled"
+                      value={formik.values.tokenPrice}
+                      onChange={(e) =>
+                        formik.setFieldValue('tokenPrice', e.target.value)
+                      }
                       name="token-price"
                       label="USD"
                       sx={{ mt: '2rem' }}
@@ -67,6 +109,10 @@ const StepTwo = () => {
                     <TextField
                       color="primary"
                       variant="filled"
+                      value={formik.values.softCap}
+                      onChange={(e) =>
+                        formik.setFieldValue('softCap', e.target.value)
+                      }
                       name="Soft-cap"
                       label="USD"
                       sx={{ mt: '2rem' }}
@@ -88,6 +134,10 @@ const StepTwo = () => {
                       variant="filled"
                       name="hard-cap"
                       label="USD"
+                      value={formik.values.hardCap}
+                      onChange={(e) =>
+                        formik.setFieldValue('hardCap', e.target.value)
+                      }
                       sx={{ mt: '2rem' }}
                     />
                   </Box>
@@ -107,6 +157,10 @@ const StepTwo = () => {
                     <TextField
                       color="primary"
                       variant="filled"
+                      value={formik.values.maxContribution}
+                      onChange={(e) =>
+                        formik.setFieldValue('maxContribution', e.target.value)
+                      }
                       name="max-contribution"
                       label="USD"
                       sx={{ mt: '2rem' }}
@@ -126,6 +180,10 @@ const StepTwo = () => {
                     <TextField
                       color="primary"
                       variant="filled"
+                      value={formik.values.minContribution}
+                      onChange={(e) =>
+                        formik.setFieldValue('minContribution', e.target.value)
+                      }
                       name="min-contribution"
                       label="USD"
                       sx={{ mt: '2rem' }}

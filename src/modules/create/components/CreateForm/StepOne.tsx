@@ -14,9 +14,9 @@ import StepButtons from './StepButtons';
 import StepContainer from './StepContainer';
 
 const validationSchema = Yup.object().shape({
-  projectName: Yup.string().required(),
-  description: Yup.string().required(),
-  chainId: Yup.string().required()
+  projectName: Yup.string().required('This is a required field'),
+  description: Yup.string().required('This is a required field'),
+  chainId: Yup.string().required('This is a required field')
 });
 
 const StepOne = () => {
@@ -31,6 +31,9 @@ const StepOne = () => {
         chainId: createForm.chainId
       }}
       validationSchema={validationSchema}
+      validateOnChange={false}
+      validateOnBlur={true}
+      validateOnMount={false}
       onSubmit={(values) => {
         dispatch(updateCreateForm(values));
         dispatch(handleNextStep());
@@ -54,6 +57,8 @@ const StepOne = () => {
                       color="primary"
                       variant="filled"
                       label="Proyect title"
+                      error={!!formik.errors.projectName}
+                      helperText={formik.errors.projectName}
                       name="project-name"
                       value={formik.values.projectName}
                       onChange={(e) =>
@@ -65,6 +70,8 @@ const StepOne = () => {
                       color="primary"
                       variant="filled"
                       label="Description"
+                      error={!!formik.errors.description}
+                      helperText={formik.errors.description}
                       name="description"
                       value={formik.values.description}
                       onChange={(e) =>
@@ -78,6 +85,8 @@ const StepOne = () => {
                       variant="filled"
                       label="Chain id"
                       name="chain-id"
+                      error={!!formik.errors.chainId}
+                      helperText={formik.errors.chainId}
                       value={formik.values.chainId}
                       onChange={(e) =>
                         formik.setFieldValue('chainId', e.target.value)

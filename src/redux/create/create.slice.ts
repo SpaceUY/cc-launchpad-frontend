@@ -7,7 +7,13 @@ const initialState: ICreateState = {
   createForm: {
     projectName: '',
     description: '',
-    chainId: ''
+    chainId: '',
+    tokenAddress: '',
+    tokenPrice: '',
+    softCap: '',
+    hardCap: '',
+    maxContribution: '',
+    minContribution: ''
   }
 };
 
@@ -21,7 +27,10 @@ const createStateSlice = createSlice({
     handlePreviousStep: (state) => {
       if (state.step > 1) state.step = state.step - 1;
     },
-    updateCreateForm: (state, action: PayloadAction<CreateFormState>) => {
+    updateCreateForm: (
+      state,
+      action: PayloadAction<Partial<CreateFormState>>
+    ) => {
       state.createForm = { ...state.createForm, ...action.payload };
     }
   }
