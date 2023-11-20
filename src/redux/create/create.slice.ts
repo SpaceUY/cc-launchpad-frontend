@@ -6,7 +6,7 @@ import { CreateFormState, ICreateState } from './types/createState.interface';
 const initialState: ICreateState = {
   step: 1,
   createForm: {
-    projectName: '',
+    name: '',
     description: '',
     chainId: 80001,
     tokenAddress: '',
@@ -18,7 +18,8 @@ const initialState: ICreateState = {
     startDate: dayjs(),
     vestingCliff: '',
     investingPhase: '',
-    totalPeriods: ''
+    totalPeriods: '',
+    vestingPeriodInDays: ''
   }
 };
 

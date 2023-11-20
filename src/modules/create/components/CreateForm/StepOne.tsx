@@ -23,7 +23,7 @@ import StepButtons from './StepButtons';
 import StepContainer from './StepContainer';
 
 const validationSchema = Yup.object().shape({
-  projectName: Yup.string().required('This is a required field'),
+  name: Yup.string().required('This is a required field'),
   description: Yup.string().required('This is a required field'),
   chainId: Yup.string().required('This is a required field')
 });
@@ -35,7 +35,7 @@ const StepOne = () => {
   return (
     <Formik
       initialValues={{
-        projectName: createForm.projectName,
+        name: createForm.name,
         description: createForm.description,
         chainId: createForm.chainId
       }}
@@ -70,13 +70,13 @@ const StepOne = () => {
                     <TextField
                       color="primary"
                       variant="filled"
-                      label="Proyect title"
-                      error={!!formik.errors.projectName}
-                      helperText={formik.errors.projectName}
+                      label="Name"
+                      error={!!formik.errors.name}
+                      helperText={formik.errors.name}
                       name="project-name"
-                      value={formik.values.projectName}
+                      value={formik.values.name}
                       onChange={(e) =>
-                        formik.setFieldValue('projectName', e.target.value)
+                        formik.setFieldValue('name', e.target.value)
                       }
                       sx={{ my: '2rem' }}
                     />
