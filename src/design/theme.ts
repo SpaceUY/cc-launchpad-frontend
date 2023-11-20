@@ -1,9 +1,9 @@
 import { createTheme } from '@mui/material/styles';
 
 const primary = {
-  dark: '#433273',
-  main: '#5F47A4',
-  light: '#7A5FC8'
+  dark: '#040D42',
+  main: '#560293',
+  light: '#8933D3'
 };
 
 export const Colors = {
@@ -15,14 +15,19 @@ export const Colors = {
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
-    primary
+    mode: 'light',
+    primary,
+    background: {
+      default: '#051444'
+    }
   },
   components: {
     MuiAppBar: {
       styleOverrides: {
         colorPrimary: {
-          backgroundColor: primary.dark
+          backgroundColor: 'transparent',
+          backgroundImage: 'none',
+          boxShadow: 'none'
         }
       }
     }

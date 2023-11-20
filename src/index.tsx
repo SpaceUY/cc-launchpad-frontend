@@ -1,10 +1,10 @@
 import { ThemeProvider } from '@emotion/react';
-import theme from 'design/theme';
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 
 import { CssBaseline } from '@mui/material';
+
+import theme from 'design/theme';
 
 import store from 'redux/store';
 
