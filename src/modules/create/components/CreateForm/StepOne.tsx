@@ -3,7 +3,16 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
-import { Box, Grid, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography
+} from '@mui/material';
 
 import WhiteCard from 'design/WhiteCard';
 
@@ -44,7 +53,12 @@ const StepOne = () => {
             <Grid container spacing={2} justifyContent="center">
               <Grid item>
                 <WhiteCard>
-                  <Box display="flex" flexDirection="column">
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    width="40vw"
+                    maxWidth="100%"
+                    m="auto">
                     <Typography
                       color="#2E308D"
                       fontSize="0.875rem"
@@ -64,7 +78,7 @@ const StepOne = () => {
                       onChange={(e) =>
                         formik.setFieldValue('projectName', e.target.value)
                       }
-                      sx={{ my: '2rem', width: 'fit-content' }}
+                      sx={{ my: '2rem' }}
                     />
                     <TextField
                       color="primary"
@@ -79,20 +93,25 @@ const StepOne = () => {
                       }
                       multiline
                       rows={6}
+                      sx={{ mb: '2rem' }}
                     />
-                    <TextField
-                      color="primary"
-                      variant="filled"
-                      label="Chain id"
-                      name="chain-id"
-                      error={!!formik.errors.chainId}
-                      helperText={formik.errors.chainId}
-                      value={formik.values.chainId}
-                      onChange={(e) =>
-                        formik.setFieldValue('chainId', e.target.value)
-                      }
-                      sx={{ mt: '2rem', width: 'fit-content' }}
-                    />
+                    <FormControl variant="filled">
+                      <InputLabel id="chain-label">Chain</InputLabel>
+                      <Select
+                        labelId="chain-label"
+                        color="primary"
+                        name="chain-id"
+                        error={!!formik.errors.chainId}
+                        value={formik.values.chainId}
+                        onChange={(e) =>
+                          formik.setFieldValue(
+                            'chainId',
+                            e.target.value as string
+                          )
+                        }>
+                        <MenuItem value={80001}>Polygon Mumbai</MenuItem>
+                      </Select>
+                    </FormControl>
                   </Box>
                 </WhiteCard>
               </Grid>

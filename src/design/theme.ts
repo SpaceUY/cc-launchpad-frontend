@@ -18,8 +18,7 @@ const theme = createTheme({
     mode: 'light',
     primary,
     background: {
-      default: '#051444',
-      paper: '#051444'
+      default: '#051444'
     }
   },
   components: {

@@ -56,7 +56,7 @@ const Home = () => {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         position="fixed"
-        bottom={'-30%'}
+        bottom={'-14rem'}
         display="flex"
         gap={'25%'}
         left={'15%'}
@@ -101,7 +101,7 @@ const Home = () => {
       </Box>
       <Box
         position="fixed"
-        bottom={'-30%'}
+        bottom={'-14rem'}
         display="flex"
         gap={'25%'}
         right={'15%'}

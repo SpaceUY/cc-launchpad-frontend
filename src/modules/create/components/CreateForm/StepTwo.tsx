@@ -62,6 +62,8 @@ const StepTwo = () => {
                     <TextField
                       color="primary"
                       variant="filled"
+                      helperText={formik.errors.tokenAddress}
+                      error={!!formik.errors.tokenAddress}
                       value={formik.values.tokenAddress}
                       onChange={(e) =>
                         formik.setFieldValue('tokenAddress', e.target.value)
@@ -84,6 +86,8 @@ const StepTwo = () => {
                     <TextField
                       color="primary"
                       variant="filled"
+                      helperText={formik.errors.tokenPrice}
+                      error={!!formik.errors.tokenPrice}
                       value={formik.values.tokenPrice}
                       onChange={(e) =>
                         formik.setFieldValue('tokenPrice', e.target.value)
@@ -109,6 +113,8 @@ const StepTwo = () => {
                     <TextField
                       color="primary"
                       variant="filled"
+                      helperText={formik.errors.softCap}
+                      error={!!formik.errors.softCap}
                       value={formik.values.softCap}
                       onChange={(e) =>
                         formik.setFieldValue('softCap', e.target.value)
@@ -134,6 +140,8 @@ const StepTwo = () => {
                       variant="filled"
                       name="hard-cap"
                       label="USD"
+                      helperText={formik.errors.hardCap}
+                      error={!!formik.errors.hardCap}
                       value={formik.values.hardCap}
                       onChange={(e) =>
                         formik.setFieldValue('hardCap', e.target.value)
@@ -157,6 +165,8 @@ const StepTwo = () => {
                     <TextField
                       color="primary"
                       variant="filled"
+                      helperText={formik.errors.maxContribution}
+                      error={!!formik.errors.maxContribution}
                       value={formik.values.maxContribution}
                       onChange={(e) =>
                         formik.setFieldValue('maxContribution', e.target.value)
@@ -180,6 +190,8 @@ const StepTwo = () => {
                     <TextField
                       color="primary"
                       variant="filled"
+                      helperText={formik.errors.minContribution}
+                      error={!!formik.errors.minContribution}
                       value={formik.values.minContribution}
                       onChange={(e) =>
                         formik.setFieldValue('minContribution', e.target.value)

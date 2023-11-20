@@ -1,10 +1,13 @@
-import { Formik } from 'formik';
+import dayjs from 'dayjs';
+import { Form, Formik } from 'formik';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { Form } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { Box, Grid, TextField, Typography } from '@mui/material';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateField } from '@mui/x-date-pickers/DateField';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 import WhiteCard from 'design/WhiteCard';
 
@@ -15,12 +18,10 @@ import StepButtons from './StepButtons';
 import StepContainer from './StepContainer';
 
 const validationSchema = Yup.object().shape({
-  tokenAddress: Yup.string().required('This is a required field'),
-  tokenPrice: Yup.string().required('This is a required field'),
-  softCap: Yup.string().required('This is a required field'),
-  hardCap: Yup.string().required('This is a required field'),
-  maxContribution: Yup.string().required('This is a required field'),
-  minContribution: Yup.string().required('This is a required field')
+  // startDate: Yup.string().required('This is a required field'),
+  vestingCliff: Yup.string().required('This is a required field'),
+  investingPhase: Yup.string().required('This is a required field'),
+  totalPeriods: Yup.string().required('This is a required field')
 });
 
 const StepThree = () => {
@@ -30,9 +31,10 @@ const StepThree = () => {
   return (
     <Formik
       initialValues={{
-        projectName: createForm.projectName,
-        description: createForm.description,
-        chainId: createForm.chainId
+        startDate: createForm.startDate,
+        vestingCliff: createForm.vestingCliff,
+        investingPhase: createForm.investingPhase,
+        totalPeriods: createForm.totalPeriods
       }}
       validationSchema={validationSchema}
       validateOnChange={false}
@@ -41,6 +43,7 @@ const StepThree = () => {
       onSubmit={(values) => {
         dispatch(updateCreateForm(values));
         dispatch(handleNextStep());
+        console.log('createForm', createForm);
       }}>
       {(formik) => (
         <Form>
@@ -57,12 +60,27 @@ const StepThree = () => {
                       textTransform="uppercase">
                       Start date
                     </Typography>
-                    <TextField
-                      color="primary"
-                      variant="filled"
-                      name="start-date"
-                      sx={{ mt: '2rem' }}
-                    />
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DateField
+                        label="Start date"
+                        defaultValue={dayjs()}
+                        color="primary"
+                        variant="filled"
+                        name="start-date"
+                        value={formik.values.startDate}
+                        helperText={
+                          !!formik.errors.startDate ? (
+                            <Typography variant="body2" color="error">
+                              This field is required
+                            </Typography>
+                          ) : (
+                            <></>
+                          )
+                        }
+                        onChange={(e) => formik.setFieldValue('startDate', e)}
+                        sx={{ mt: '2rem' }}
+                      />
+                    </LocalizationProvider>
                   </Box>
                 </WhiteCard>
               </Grid>
@@ -82,6 +100,12 @@ const StepThree = () => {
                       variant="filled"
                       label="Days"
                       name="vesting-cliff"
+                      error={!!formik.errors.vestingCliff}
+                      helperText={formik.errors.vestingCliff}
+                      value={formik.values.vestingCliff}
+                      onChange={(e) =>
+                        formik.setFieldValue('vestingCliff', e.target.value)
+                      }
                       sx={{ mt: '2rem' }}
                     />
                   </Box>
@@ -100,6 +124,12 @@ const StepThree = () => {
                       color="primary"
                       variant="filled"
                       name="vesting-total-periods"
+                      error={!!formik.errors.totalPeriods}
+                      helperText={formik.errors.totalPeriods}
+                      value={formik.values.totalPeriods}
+                      onChange={(e) =>
+                        formik.setFieldValue('totalPeriods', e.target.value)
+                      }
                       sx={{ mt: '2rem' }}
                     />
                   </Box>
@@ -120,6 +150,12 @@ const StepThree = () => {
                       color="primary"
                       variant="filled"
                       name="investing-phase"
+                      error={!!formik.errors.investingPhase}
+                      helperText={formik.errors.investingPhase}
+                      value={formik.values.investingPhase}
+                      onChange={(e) =>
+                        formik.setFieldValue('investingPhase', e.target.value)
+                      }
                       label="Days"
                       sx={{ mt: '2rem' }}
                     />

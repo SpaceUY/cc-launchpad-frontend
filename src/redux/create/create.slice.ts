@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import dayjs from 'dayjs';
 
 import { CreateFormState, ICreateState } from './types/createState.interface';
 
@@ -7,13 +8,17 @@ const initialState: ICreateState = {
   createForm: {
     projectName: '',
     description: '',
-    chainId: '',
+    chainId: 80001,
     tokenAddress: '',
     tokenPrice: '',
     softCap: '',
     hardCap: '',
     maxContribution: '',
-    minContribution: ''
+    minContribution: '',
+    startDate: dayjs(),
+    vestingCliff: '',
+    investingPhase: '',
+    totalPeriods: ''
   }
 };
 
