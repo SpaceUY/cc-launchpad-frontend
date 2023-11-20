@@ -160,18 +160,18 @@ const StepTwo = () => {
                       fontWeight={500}
                       letterSpacing="0.7031rem"
                       textTransform="uppercase">
-                      Max Contribution
+                      Min Contribution
                     </Typography>
                     <TextField
                       color="primary"
                       variant="filled"
-                      helperText={formik.errors.maxContribution}
-                      error={!!formik.errors.maxContribution}
-                      value={formik.values.maxContribution}
+                      helperText={formik.errors.minContribution}
+                      error={!!formik.errors.minContribution}
+                      value={formik.values.minContribution}
                       onChange={(e) =>
-                        formik.setFieldValue('maxContribution', e.target.value)
+                        formik.setFieldValue('minContribution', e.target.value)
                       }
-                      name="max-contribution"
+                      name="min-contribution"
                       label="USD"
                       sx={{ mt: '2rem' }}
                     />
@@ -185,18 +185,18 @@ const StepTwo = () => {
                       fontWeight={500}
                       letterSpacing="0.7031rem"
                       textTransform="uppercase">
-                      Min Contribution
+                      Max Contribution
                     </Typography>
                     <TextField
                       color="primary"
                       variant="filled"
-                      helperText={formik.errors.minContribution}
-                      error={!!formik.errors.minContribution}
-                      value={formik.values.minContribution}
+                      helperText={formik.errors.maxContribution}
+                      error={!!formik.errors.maxContribution}
+                      value={formik.values.maxContribution}
                       onChange={(e) =>
-                        formik.setFieldValue('minContribution', e.target.value)
+                        formik.setFieldValue('maxContribution', e.target.value)
                       }
-                      name="min-contribution"
+                      name="max-contribution"
                       label="USD"
                       sx={{ mt: '2rem' }}
                     />
