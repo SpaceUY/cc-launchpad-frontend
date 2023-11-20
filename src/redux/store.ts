@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 
 import createSlice from './create/create.slice';
+import idoSlice from './ido/ido.slice';
 
 export const rootReducer = (state: any, action: Action<string>) => {
   if (action.type === 'RESET_STATE') {
@@ -16,7 +17,8 @@ export const rootReducer = (state: any, action: Action<string>) => {
 };
 
 const appReducer = combineReducers({
-  create: createSlice
+  create: createSlice,
+  ido: idoSlice
 });
 
 export const store = configureStore({

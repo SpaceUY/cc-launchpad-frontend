@@ -12,7 +12,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import WhiteCard from 'design/WhiteCard';
 
 import { createSelector } from 'redux/create/create.selector';
-import { handleNextStep, updateCreateForm } from 'redux/create/create.slice';
+import { updateCreateForm } from 'redux/create/create.slice';
 
 import StepButtons from './StepButtons';
 import StepContainer from './StepContainer';
@@ -42,7 +42,6 @@ const StepThree = () => {
       validateOnMount={false}
       onSubmit={(values) => {
         dispatch(updateCreateForm(values));
-        dispatch(handleNextStep());
         console.log('createForm', createForm);
       }}>
       {(formik) => (
