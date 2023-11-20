@@ -15,8 +15,9 @@ export type CreateFormState = {
   hardCap: string;
   maxContribution: string;
   minContribution: string;
-  projectName: string;
+  name: string;
   description: string;
   chainId: number;
   totalPeriods: string;
+  vestingPeriodInDays: string;
 };

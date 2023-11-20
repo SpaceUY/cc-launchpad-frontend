@@ -5,6 +5,7 @@ import { IDO } from './types/ido.entity';
 import { IIdoState } from './types/idoState.interface';
 
 const initialState: IIdoState = {
+  loading: false,
   idos: []
 };
 
@@ -13,12 +14,17 @@ const idStateSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(
-      createIDO.fulfilled,
-      (state, action: PayloadAction<IDO>) => {
+    builder
+      .addCase(createIDO.fulfilled, (state, action: PayloadAction<IDO>) => {
         state.idos = [action.payload, ...state.idos];
-      }
-    );
+        state.loading = false;
+      })
+      .addCase(createIDO.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(createIDO.rejected, (state) => {
+        state.loading = false;
+      });
   }
 });
 

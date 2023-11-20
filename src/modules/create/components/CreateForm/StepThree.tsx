@@ -13,6 +13,7 @@ import WhiteCard from 'design/WhiteCard';
 
 import { createSelector } from 'redux/create/create.selector';
 import { updateCreateForm } from 'redux/create/create.slice';
+import { createIDO } from 'redux/ido/ido.actions';
 
 import StepButtons from './StepButtons';
 import StepContainer from './StepContainer';
@@ -21,7 +22,8 @@ const validationSchema = Yup.object().shape({
   // startDate: Yup.string().required('This is a required field'),
   vestingCliff: Yup.string().required('This is a required field'),
   investingPhase: Yup.string().required('This is a required field'),
-  totalPeriods: Yup.string().required('This is a required field')
+  totalPeriods: Yup.string().required('This is a required field'),
+  vestingPeriodInDays: Yup.string().required('This is a required field')
 });
 
 const StepThree = () => {
@@ -34,7 +36,8 @@ const StepThree = () => {
         startDate: createForm.startDate,
         vestingCliff: createForm.vestingCliff,
         investingPhase: createForm.investingPhase,
-        totalPeriods: createForm.totalPeriods
+        totalPeriods: createForm.totalPeriods,
+        vestingPeriodInDays: createForm.vestingPeriodInDays
       }}
       validationSchema={validationSchema}
       validateOnChange={false}
@@ -43,6 +46,7 @@ const StepThree = () => {
       onSubmit={(values) => {
         dispatch(updateCreateForm(values));
         console.log('createForm', createForm);
+        dispatch(createIDO(createForm));
       }}>
       {(formik) => (
         <Form>
@@ -154,6 +158,34 @@ const StepThree = () => {
                       value={formik.values.investingPhase}
                       onChange={(e) =>
                         formik.setFieldValue('investingPhase', e.target.value)
+                      }
+                      label="Days"
+                      sx={{ mt: '2rem' }}
+                    />
+                  </Box>
+                </WhiteCard>
+                <WhiteCard>
+                  <Box display="flex" flexDirection="column">
+                    <Typography
+                      color="#2E308D"
+                      fontSize="0.875rem"
+                      fontWeight={500}
+                      letterSpacing="0.7031rem"
+                      textTransform="uppercase">
+                      Investing Phase
+                    </Typography>
+                    <TextField
+                      color="primary"
+                      variant="filled"
+                      name="vestingPeriodInDays"
+                      error={!!formik.errors.vestingPeriodInDays}
+                      helperText={formik.errors.vestingPeriodInDays}
+                      value={formik.values.vestingPeriodInDays}
+                      onChange={(e) =>
+                        formik.setFieldValue(
+                          'vestingPeriodInDays',
+                          e.target.value
+                        )
                       }
                       label="Days"
                       sx={{ mt: '2rem' }}
