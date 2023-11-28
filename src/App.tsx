@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Routes from 'components/Routes';
 
+//c
 const App = () => {
   return (
     <Web3authContextProvider>
