@@ -81,28 +81,46 @@ const Landing = () => {
                 marginX: 20
               }}>
               <Box sx={{ width: '50%', paddingRight: '10%' }}>
-                <Typography
-                  variant="h1"
-                  component="h1"
-                  sx={{
-                    color: '#FFF',
-                    fontFamily: 'Roboto',
-                    fontWeight: 'bold',
-                    fontSize: 56
-                  }}>
-                  THE ACE WAY
-                  <br />
+                <Box sx={{ display: 'flex' }}>
                   <Typography
                     variant="h1"
                     component="h1"
                     sx={{
-                      fontStyle: 'italic',
+                      color: '#FFF',
                       fontFamily: 'Roboto',
+                      fontWeight: 'bold',
                       fontSize: 56
                     }}>
-                    TO CRYPTO
+                    THE ACE WAY
+                    <br />
+                    <Typography
+                      variant="h1"
+                      component="h1"
+                      sx={{
+                        fontStyle: 'italic',
+                        fontFamily: 'Roboto',
+                        fontSize: 56
+                      }}>
+                      TO CRYPTO
+                    </Typography>
                   </Typography>
-                </Typography>
+
+                  <Box>
+                    <Box
+                      sx={{
+                        px: 1.5,
+                        py: 0.5,
+                        backgroundColor: 'rgba(103, 102, 226)',
+                        borderRadius: 99999,
+                        mt: 2,
+                        ml: 3
+                      }}>
+                      <Typography color="#FFF" fontSize={14}>
+                        Coming soon
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
 
                 <Typography sx={{ color: '#FFF' }}>
                   We offer a seamless, transparent, and multi-chain crowdfunding
