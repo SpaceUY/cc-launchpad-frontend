@@ -21,7 +21,7 @@ $ npm run build
 You are going to need a clientId from Web3Auth to make work the wallet connections.
 
 ```ini
-# This line is ignored since it's a comment
+#  .env file
 REACT_APP_WEB3AUTH_CLIENT_ID=
 REACT_APP_BACK_URL=http://localhost:4000
 ```
