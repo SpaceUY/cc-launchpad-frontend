@@ -1,8 +1,4 @@
-import { ReactComponent as GlareBackground } from 'assets/images/Glare.svg';
-import { ReactComponent as StarsBackground } from 'assets/images/Stars background.svg';
-import backgroundPurple from 'assets/images/background-purple.png';
 import { ReactComponent as ElipseS } from 'assets/images/ellipse-56.svg';
-import { ReactComponent as ElipseF } from 'assets/images/ellipse-57.svg';
 import logoCompany from 'assets/images/logo-company.png';
 import space from 'assets/images/stars-landing.png';
 import { useNavigate } from 'react-router-dom';
