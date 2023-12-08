@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { Box, Typography } from '@mui/material';
 import { Container } from '@mui/system';
@@ -9,6 +9,22 @@ import Link from 'design/Link';
 
 const Home = () => {
   const letsGetStartedRef = useRef<HTMLParagraphElement | null>(null);
+  const [showCardText1, setShowCardText1] = useState<boolean>(false);
+  const [showCardText2, setShowCardText2] = useState<boolean>(false);
+
+  const onMouseEnterCard1 = () => {
+    setShowCardText1(true);
+  };
+  const onMouseLeaveCard1 = () => {
+    setShowCardText1(false);
+  };
+
+  const onMouseEnterCard2 = () => {
+    setShowCardText2(true);
+  };
+  const onMouseLeaveCard2 = () => {
+    setShowCardText2(false);
+  };
 
   const onMouseEnter = () => {
     if (letsGetStartedRef.current) {
@@ -53,16 +69,23 @@ const Home = () => {
         </Typography>
       </Typography>
       <Box
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
+        onMouseEnter={() => {
+          onMouseEnter();
+          onMouseEnterCard1();
+        }}
+        onMouseLeave={() => {
+          onMouseLeave();
+          onMouseLeaveCard1();
+        }}
         position="fixed"
         bottom={'-14rem'}
         display="flex"
-        gap={'25%'}
+        gap={'20%'}
         left={'15%'}
         sx={{
-          transition: 'all ease-in 200ms',
-          '&:hover': { bottom: '-2%' }
+          transition: 'all ease-in 400ms',
+          '&:hover': { bottom: '-2%' },
+          minHeight: '10rem'
         }}>
         <Link to="/create">
           <Card width="21.625rem" height="100%">
@@ -73,27 +96,40 @@ const Home = () => {
               textTransform="uppercase">
               Create
             </Typography>
-            <Typography
-              fontSize="1.125rem"
-              fontWeight={500}
-              textAlign="center"
-              pt={'1.25rem'}
-              textTransform="uppercase">
-              Your own ido
-            </Typography>
-            <Typography
-              fontSize="1.125rem"
-              fontWeight={500}
-              textAlign="center"
-              pt={'1.25rem'}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod
-            </Typography>
+            {showCardText1 ? (
+              <>
+                <Typography
+                  fontSize="1.125rem"
+                  fontWeight={500}
+                  textAlign="center"
+                  pt={'1.25rem'}
+                  textTransform="uppercase">
+                  Your own ido - Condition True
+                </Typography>
+                <Typography
+                  fontSize="1.125rem"
+                  fontWeight={500}
+                  textAlign="center"
+                  pt={'1.25rem'}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod
+                </Typography>
+              </>
+            ) : (
+              <Box sx={{ minHeight: '8rem' }} />
+            )}
+
             <ContrastButton
               fullWidth
               variant="contained"
               color="inherit"
-              sx={{ mt: '3.875rem', fontSize: '1.125rem' }}>
+              sx={{
+                mt: '3.875rem',
+                fontSize: '1.125rem',
+                marginBottom: '1rem',
+                padding: 0,
+                minHeight: '3rem'
+              }}>
               GO
             </ContrastButton>
           </Card>
@@ -105,10 +141,16 @@ const Home = () => {
         display="flex"
         gap={'25%'}
         right={'15%'}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
+        onMouseEnter={() => {
+          onMouseEnter();
+          onMouseEnterCard2();
+        }}
+        onMouseLeave={() => {
+          onMouseLeave();
+          onMouseLeaveCard2();
+        }}
         sx={{ transition: 'all ease-in 200ms', '&:hover': { bottom: '-2%' } }}>
-        <Link to="/create">
+        <Link to="/participate">
           <Card width="21.625rem" height="100%">
             <Typography
               fontSize="2.25rem"
@@ -117,27 +159,41 @@ const Home = () => {
               textTransform="uppercase">
               Participate
             </Typography>
-            <Typography
-              fontSize="1.125rem"
-              fontWeight={500}
-              textAlign="center"
-              pt={'1.25rem'}
-              textTransform="uppercase">
-              AVAILABLE IDOs
-            </Typography>
-            <Typography
-              fontSize="1.125rem"
-              fontWeight={500}
-              textAlign="center"
-              pt={'1.25rem'}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod
-            </Typography>
+            {showCardText2 ? (
+              <>
+                {' '}
+                <Typography
+                  fontSize="1.125rem"
+                  fontWeight={500}
+                  textAlign="center"
+                  pt={'1.25rem'}
+                  textTransform="uppercase">
+                  AVAILABLE IDOs
+                </Typography>
+                <Typography
+                  fontSize="1.125rem"
+                  fontWeight={500}
+                  textAlign="center"
+                  pt={'1.25rem'}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod
+                </Typography>
+              </>
+            ) : (
+              <Box sx={{ minHeight: '8rem' }} />
+            )}
+
             <ContrastButton
               fullWidth
               variant="contained"
               color="inherit"
-              sx={{ mt: '3.875rem', fontSize: '1.125rem' }}>
+              sx={{
+                mt: '3.875rem',
+                fontSize: '1.125rem',
+                marginBottom: '1rem',
+                padding: 0,
+                minHeight: '3rem'
+              }}>
               GO
             </ContrastButton>
           </Card>

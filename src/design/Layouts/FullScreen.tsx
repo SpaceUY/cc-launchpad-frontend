@@ -42,9 +42,11 @@ const variants = {
 };
 
 const FullScreen = ({
-  showNavigation = true
+  showNavigation = true,
+  showBackgroundImages = true
 }: {
   showNavigation?: boolean;
+  showBackgroundImages?: boolean;
 }) => {
   const Web3auth = useWeb3auth();
   const navigate = useNavigate();
@@ -54,10 +56,10 @@ const FullScreen = ({
   return (
     <>
       <Box position="fixed" top={0} left={0} zIndex={-1} width="100%">
-        <StarsBackground />
+        {showBackgroundImages && <StarsBackground />}
       </Box>
       <Box position="fixed" bottom={0} left={'5%'} zIndex={-1}>
-        <GlareBackground />
+        {showBackgroundImages && <GlareBackground />}
       </Box>
       <AppBar position="fixed">
         <Toolbar>

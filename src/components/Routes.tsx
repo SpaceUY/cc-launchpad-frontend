@@ -7,10 +7,18 @@ import CreatePage from 'modules/create/pages/Creates';
 
 import ParticipatePage from 'modules/participate/pages/Participate';
 
+import Landing from '../pages/Landing';
+
 const Routes = () => (
   <RoutesFromRouter>
+    <Route
+      element={
+        <FullScreen showNavigation={false} showBackgroundImages={false} />
+      }>
+      <Route path={'/'} element={<Landing />} />
+    </Route>
     <Route element={<FullScreen showNavigation={false} />}>
-      <Route path={'/'} element={<Home />} />
+      <Route path={'/lets-start'} element={<Home />} />
     </Route>
     <Route element={<FullScreen />} path={'/create'}>
       <Route path={'/create'} element={<CreatePage />} />
