@@ -96,7 +96,13 @@ const FullScreen = ({
                 }}>
                 {Web3auth && Web3auth.loggedIn ? 'Disconnect' : 'Connect'}
               </Button>
-              <Button color="primary" variant="contained" sx={{ px: 4 }}>
+              <Button
+                color="primary"
+                variant="contained"
+                sx={{ px: 4 }}
+                onClick={() => {
+                  navigate('/lets-start');
+                }}>
                 JOIN
               </Button>
             </Box>

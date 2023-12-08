@@ -111,8 +111,7 @@ const Home = () => {
                   fontWeight={500}
                   textAlign="center"
                   pt={'1.25rem'}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod
+                  Launch with Confidence and Success
                 </Typography>
               </>
             ) : (
@@ -175,8 +174,7 @@ const Home = () => {
                   fontWeight={500}
                   textAlign="center"
                   pt={'1.25rem'}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod
+                  Dive into a World of Promising Projects
                 </Typography>
               </>
             ) : (
