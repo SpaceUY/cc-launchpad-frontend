@@ -5,6 +5,7 @@ import { ReactComponent as ElipseS } from 'assets/images/ellipse-56.svg';
 import { ReactComponent as ElipseF } from 'assets/images/ellipse-57.svg';
 import logoCompany from 'assets/images/logo-company.png';
 import space from 'assets/images/stars-landing.png';
+import { useNavigate } from 'react-router-dom';
 
 import {
   Facebook,
@@ -16,6 +17,8 @@ import {
 import { Box, Button, Divider, Typography } from '@mui/material';
 
 const Landing = () => {
+  const navigate = useNavigate();
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
       <Box sx={{ width: '100%', height: '100hv', overflow: 'hidden' }}>
@@ -117,6 +120,9 @@ const Landing = () => {
                 maxWidth: '1920px'
               }}>
               <Button
+                onClick={() => {
+                  navigate('/lets-start');
+                }}
                 variant="outlined"
                 sx={{
                   mt: 16.5,
@@ -528,7 +534,7 @@ const Landing = () => {
                   fontSize: 14,
                   mr: 1.5
                 }}>
-                © 2010 — 2023
+                © 2010 — {new Date().getFullYear()}
               </Typography>
               <Typography
                 sx={{
